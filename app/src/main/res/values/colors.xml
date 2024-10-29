@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="blue">#1DA1F2</color>
+    <color name="black">#14171A</color>
+    <color name="dark_gray">#657786</color>
+    <color name="light_gray">#AAB8C2</color>
+    <color name="extra_light_gray">#E1E8ED</color>
+    <color name="extra_extra_light_gray">#F5F8FA</color>
+    <color name="yellow">#FFC107</color>
+
+    <color name="selected_item_background">#E1E8ED</color>
+    <color name="default_item_background">#FFFFFFFF</color>
+
+    <color name="checked_color">#FFC107</color>
+    <color name="unchecked_color">#FFFFFFFF</color>
+</resources>
