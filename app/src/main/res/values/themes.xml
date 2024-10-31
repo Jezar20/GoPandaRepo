@@ -9,5 +9,28 @@
 <!--        <item name="itemBackground">@color/dark_gray</item>-->
     </style>
 
+    <style name="CustomCardViewStyle" parent="Widget.MaterialComponents.CardView">
+<!--        <item name="cardBackgroundColor">@color/white</item>-->
+<!--        <item name="checkedIconTint">@color/yellow</item>-->
+        <item name="cardForegroundColor">@android:color/transparent</item>
+<!--        <item name="rippleColor">@color/white</item>-->
+    </style>
+
+    <style name="CustomBottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="backgroundColor">@color/white</item>
+    </style>
+
+
+    <style name="PersistentBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/PersistentBottomSheet</item>
+    </style>
+
+    <style name="PersistentBottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="behavior_peekHeight">300dp</item>
+        <item name="behavior_hideable">false</item>
+        <item name="behavior_fitToContents">true</item>
+    </style>
+
+
     <style name="Theme.BookingApp" parent="Base.Theme.BookingApp" />
 </resources>

@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.FragmentContainerView
+import com.google.android.material.search.SearchBar
 import com.google.android.material.tabs.TabLayout
 
 // TODO: Rename parameter arguments, choose names that match
@@ -69,21 +71,29 @@ class OrdersFragment : Fragment() {
                 .commit()
         }
 
-        val btnBackSignUp: AppCompatImageView = view.findViewById(R.id.btnBack)
-        btnBackSignUp.setOnClickListener {
+        val btnBack: AppCompatImageView = view.findViewById(R.id.btnBack)
+        btnBack.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, HomeFragment())
                 .commit()
         }
 
+        val searchBar = view.findViewById<SearchBar>(R.id.searchBarOrders)
+        searchBar.setOnClickListener {
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, SearchOrdersFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
         return view
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        // Show toolbar again when leaving fragment
-        (activity as? AppCompatActivity)?.supportActionBar?.show()
-    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        // Show toolbar again when leaving fragment
+//        (activity as? AppCompatActivity)?.supportActionBar?.show()
+//    }
 
     companion object {
         /**

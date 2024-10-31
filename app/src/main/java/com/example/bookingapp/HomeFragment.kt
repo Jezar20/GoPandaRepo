@@ -8,9 +8,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -43,10 +48,33 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        // Show toolbar
+        (activity as? AppCompatActivity)?.supportActionBar?.show()
+
         // Set up the first MaterialCardView
         val card = view.findViewById<MaterialCardView>(R.id.crdViewVehicles)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.nested_rv)
+        val textView = view.findViewById<TextView>(R.id.txtAdditionalServices)
+        val scrollView = view.findViewById<ScrollView>(R.id.scrollView)
+
+        // Dummy data for RecyclerView
+        val serviceList = listOf(
+            Service("Buy for me (Up to ₱2,000)", "₱50.00"),
+            Service("Extra waiting time (queueing service)", "₱70.00"),
+            Service("Thermal bag", "₱0.00"),
+            Service("Cash-on-delivery (Up to ₱2,000)", "₱30.00")
+        )
+
+        // Set up the RecyclerView adapter and layout manager
+        val adapter = MyAdapter(serviceList, parentFragmentManager)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = adapter
+
         card.setOnClickListener {
             card.isChecked = !card.isChecked
+            recyclerView.visibility = if (card.isChecked) View.VISIBLE else View.GONE
+            textView.visibility = if (card.isChecked) View.VISIBLE else View.GONE
+
             val strokeColor = if (card.isChecked) {
                 ContextCompat.getColor(requireContext(), R.color.yellow)
             } else {
@@ -54,8 +82,13 @@ class HomeFragment : Fragment() {
             }
             card.strokeColor = strokeColor
             card.strokeWidth = if (card.isChecked) 4 else 0 // adjust stroke width as needed
+
             // Update checkmark color only if you have a custom drawable
             card.setCheckedIconTint(ContextCompat.getColorStateList(requireContext(), R.color.yellow))
+
+            if (!card.isChecked) {
+                (recyclerView.adapter as MyAdapter).uncheckAllInnerCards()
+            }
 
             // Handle expansion and collapse
             val params = card.layoutParams
@@ -66,8 +99,19 @@ class HomeFragment : Fragment() {
                     params.height = animation.animatedValue as Int
                     card.layoutParams = params
                 }
+                doOnEnd {
+                    if (card.isChecked) {
+                        scrollView.post { scrollView.smoothScrollTo(0, card.top) }
+                    }
+                }
             }
             valueAnimator.start()
+
+            // Show the bottom sheet only when the card is selected
+            if (card.isChecked) {
+                val bottomSheet = SelectedServiceFragment()
+                bottomSheet.show(parentFragmentManager, bottomSheet.tag)
+            }
         }
 
         // Set up the second MaterialCardView
@@ -80,12 +124,19 @@ class HomeFragment : Fragment() {
 
         val txtPickUp = view.findViewById<TextView>(R.id.txtPickUp)
         txtPickUp.setOnClickListener {
-            Toast.makeText(activity, "Pick Up", Toast.LENGTH_SHORT).show()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, SearchLocationFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
+
 
         val txtDropOff = view.findViewById<TextView>(R.id.txtDropOff)
         txtDropOff.setOnClickListener {
-            Toast.makeText(activity, "Drop Off", Toast.LENGTH_SHORT).show()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, SearchLocationFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
         val btnAddStop = view.findViewById<TextView>(R.id.btnAddStop)
@@ -97,7 +148,7 @@ class HomeFragment : Fragment() {
     }
 
     // Variables to track expanded state and dimensions
-    private var expandedHeight = 1100
+    private var expandedHeight = 1600
 
 
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -51,7 +51,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.search.SearchBar
-        android:id="@+id/searchBar"
+        android:id="@+id/searchBarOrders"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -67,6 +67,42 @@
 
     </com.google.android.material.search.SearchBar>
 
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="60dp"-->
+<!--        android:id="@+id/searchBar">-->
+
+<!--        &lt;!&ndash; NestedScrollingChild goes here (NestedScrollView, RecyclerView, etc.). &ndash;&gt;-->
+<!--        <androidx.core.widget.NestedScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_behavior="@string/searchbar_scrolling_view_behavior">-->
+<!--            &lt;!&ndash; Screen content goes here. &ndash;&gt;-->
+<!--        </androidx.core.widget.NestedScrollView>-->
+
+<!--        <com.google.android.material.appbar.AppBarLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <com.google.android.material.search.SearchBar-->
+<!--                android:id="@+id/search_bar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Search Location"-->
+<!--                app:backgroundTint="@color/extra_light_gray"/>-->
+<!--        </com.google.android.material.appbar.AppBarLayout>-->
+
+<!--        <com.google.android.material.search.SearchView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:hint="Location"-->
+<!--            app:layout_anchor="@id/search_bar">-->
+
+<!--            &lt;!&ndash; Search suggestions/results go here (ScrollView, RecyclerView, etc.). &ndash;&gt;-->
+
+<!--        </com.google.android.material.search.SearchView>-->
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
@@ -78,7 +114,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar">
+        app:layout_constraintTop_toBottomOf="@+id/searchBarOrders">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
