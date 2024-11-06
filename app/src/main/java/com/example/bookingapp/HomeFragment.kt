@@ -12,10 +12,12 @@ import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -56,6 +58,7 @@ class HomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.nested_rv)
         val textView = view.findViewById<TextView>(R.id.txtAdditionalServices)
         val scrollView = view.findViewById<ScrollView>(R.id.scrollView)
+        val staticBottomSheet = view.findViewById<View>(R.id.staticBottomSheet)
 
         // Dummy data for RecyclerView
         val serviceList = listOf(
@@ -101,17 +104,73 @@ class HomeFragment : Fragment() {
                 }
                 doOnEnd {
                     if (card.isChecked) {
-                        scrollView.post { scrollView.smoothScrollTo(0, card.top) }
+                        scrollView.post { scrollView.smoothScrollTo(0, staticBottomSheet.top) }
                     }
                 }
             }
             valueAnimator.start()
 
-            // Show the bottom sheet only when the card is selected
+            // Show the bottom sheet only when the card is selected (BOTTOM SHEET DIALOG)
+//            if (card.isChecked) {
+//                val bottomSheet = SelectedServiceFragment()
+//                bottomSheet.show(parentFragmentManager, bottomSheet.tag)
+//            }
+
+            // Update the position of the static bottom sheet
+            val layoutParams = staticBottomSheet.layoutParams as ConstraintLayout.LayoutParams
+            layoutParams.topToBottom = card.id
+            staticBottomSheet.layoutParams = layoutParams
+
+            // Show the bottom sheet only when the card is selected (CUSTOM BOTTOM SHEET DIALOG)
             if (card.isChecked) {
-                val bottomSheet = SelectedServiceFragment()
-                bottomSheet.show(parentFragmentManager, bottomSheet.tag)
+                staticBottomSheet.visibility = View.VISIBLE
+            } else {
+                staticBottomSheet.visibility = View.GONE
             }
+
+        }
+
+        val mtrlCrdPriority = view.findViewById<MaterialCardView>(R.id.mtrlCrdPriority)
+        val mtrlCrdRegular = view.findViewById<MaterialCardView>(R.id.mtrlCrdRegular)
+
+        // Helper function to deselect all card views
+        fun deselectAll() {
+            mtrlCrdPriority.isChecked = false
+            mtrlCrdPriority.strokeColor = Color.TRANSPARENT
+            mtrlCrdPriority.strokeWidth = 0
+
+            mtrlCrdRegular.isChecked = false
+            mtrlCrdRegular.strokeColor = Color.TRANSPARENT
+            mtrlCrdRegular.strokeWidth = 0
+        }
+
+        mtrlCrdPriority.setOnClickListener {
+            deselectAll()
+            mtrlCrdPriority.isChecked = true
+            mtrlCrdPriority.strokeColor = ContextCompat.getColor(requireContext(), R.color.yellow)
+            mtrlCrdPriority.strokeWidth = 4 // adjust stroke width as needed
+        }
+
+        mtrlCrdRegular.setOnClickListener {
+            deselectAll()
+            mtrlCrdRegular.isChecked = true
+            mtrlCrdRegular.strokeColor = ContextCompat.getColor(requireContext(), R.color.yellow)
+            mtrlCrdRegular.strokeWidth = 4 // adjust stroke width as needed
+        }
+
+        // Select the "Regular" card by default
+        mtrlCrdRegular.performClick()
+
+        val btnNext = view.findViewById<MaterialButton>(R.id.btnNext)
+        btnNext.setOnClickListener {
+            // Hide toolbar
+            (activity as? AppCompatActivity)?.supportActionBar?.hide()
+
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, ReviewOrderFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+
         }
 
         // Set up the second MaterialCardView
@@ -145,6 +204,15 @@ class HomeFragment : Fragment() {
         }
 
         return view
+    }
+
+    private fun showSelectedServiceFragment()
+    {
+        val selectedServiceFragment = SelectedServiceFragment()
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, selectedServiceFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     // Variables to track expanded state and dimensions

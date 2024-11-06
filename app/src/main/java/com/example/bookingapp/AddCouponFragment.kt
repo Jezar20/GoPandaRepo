@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -16,10 +16,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SearchLocationFragment.newInstance] factory method to
+ * Use the [AddCouponFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SearchLocationFragment : Fragment() {
+class AddCouponFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,11 +36,8 @@ class SearchLocationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Hide toolbar
-        (activity as? AppCompatActivity)?.supportActionBar?.hide()
-
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_search_location, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_coupon, container, false)
 
         val btnBack: AppCompatImageView = view.findViewById(R.id.btnBack)
         btnBack.setOnClickListener {
@@ -54,13 +51,19 @@ class SearchLocationFragment : Fragment() {
             }
         })
 
-        return view
-    }
+        val txtDone = view.findViewById<TextView>(R.id.txtDone)
+        txtDone.setOnClickListener{
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        // Show toolbar again when leaving fragment
-        (activity as? AppCompatActivity)?.supportActionBar?.show()
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle the back press. For example, pop the fragment back stack
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+        })
+
+        return view
     }
 
     companion object {
@@ -70,12 +73,12 @@ class SearchLocationFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchLocationFragment.
+         * @return A new instance of fragment AddCouponFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SearchLocationFragment().apply {
+            AddCouponFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
