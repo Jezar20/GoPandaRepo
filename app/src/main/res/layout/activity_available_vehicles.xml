@@ -57,7 +57,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/crdViewVehicles"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginTop="591dp"
         app:cardBackgroundColor="@color/white"
@@ -71,82 +71,78 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imgMotorCycle"
+                android:layout_width="103dp"
+                android:layout_height="106dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_marginTop="40dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/motorvehicle" />
 
-                <ImageView
-                    android:id="@+id/imgMotorCycle"
-                    android:layout_width="103dp"
-                    android:layout_height="106dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_marginTop="40dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/motorvehicle"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/txtMotorCycle"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/txtMotorCycle"
-                    android:layout_width="87dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="136dp"
+                    android:layout_marginEnd="16dp"
                     android:fontFamily="@font/poppinsbold"
-                    android:text="MotorCycle"
+                    android:text="Motorcycle"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtMotorCycleDesc"
-                    android:layout_width="222dp"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/poppinsregular"
-                    android:text="For small items such as food, documents, and paperbags"
-                    android:textSize="10sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtMotorCycle" />
-
-                <TextView
-                    android:id="@+id/txtMotorCycleDesc2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="36dp"
-                    android:layout_marginBottom="12dp"
-                    android:alpha="0.5"
-                    android:fontFamily="@font/poppinsregular"
-                    android:text="0.5 x 0.4 x 0.5 • Meter Up to 20 kg"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtMotorCycleDesc"
-                    app:layout_constraintVertical_bias="0.8" />
-
-                <ImageView
-                    android:id="@+id/imgMotorStorage"
-                    android:layout_width="24dp"
-                    android:layout_height="20dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="4dp"
-                    android:backgroundTint="#000000"
-                    android:src="@drawable/baseline_all_inbox_24"
-                    app:layout_constraintEnd_toStartOf="@+id/txtMotorCycleDesc2"
-                    app:layout_constraintTop_toBottomOf="@+id/txtMotorCycleDesc"
-                    app:tint="@color/light_gray" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppinsregular"
+                    android:text="For small items such as food, documents, and paperbags"
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:id="@+id/imgMotorStorage"
+                        android:layout_width="24dp"
+                        android:layout_height="20dp"
+                        android:backgroundTint="#000000"
+                        android:src="@drawable/baseline_all_inbox_24"
+                        app:tint="@color/light_gray" />
+
+                    <TextView
+                        android:id="@+id/txtMotorCycleDesc2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="0.5 x 0.4 x 0.5 • Meter Up to 20 kg"
+                        android:textSize="10sp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
+
 
 
     </com.google.android.material.card.MaterialCardView>

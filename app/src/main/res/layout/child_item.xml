@@ -44,14 +44,15 @@
 
             <TextView
                 android:id="@+id/txtServicePrice"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppinsregular"
                 android:text="₱ 50.00"
                 android:textSize="12sp"
                 android:layout_weight="1"
-                android:gravity="end"/>
+                android:gravity="end"
+                android:textColor="@color/black"/>
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -72,7 +72,8 @@
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imgPickUp"
-                    app:layout_constraintTop_toBottomOf="@+id/view" />
+                    app:layout_constraintTop_toBottomOf="@+id/view"
+                    android:textColor="@color/black"/>
 
                 <View
                     android:id="@+id/view"
@@ -97,7 +98,8 @@
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imgDropOff"
-                    app:layout_constraintTop_toBottomOf="@+id/txtPickUp" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtPickUp"
+                    android:textColor="@color/black"/>
 
                 <View
                     android:id="@+id/view2"
@@ -121,7 +123,8 @@
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view2" />
+                    app:layout_constraintTop_toBottomOf="@+id/view2"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/txtVehicleType"
@@ -131,7 +134,8 @@
                     android:fontFamily="@font/poppinsregular"
                     android:text="MotorCycle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view2" />
+                    app:layout_constraintTop_toBottomOf="@+id/view2"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/txtModeType"
@@ -142,7 +146,8 @@
                     android:fontFamily="@font/poppinsregular"
                     android:text="Delivery"
                     app:layout_constraintStart_toEndOf="@+id/imgModeType"
-                    app:layout_constraintTop_toBottomOf="@+id/txtVehicleType" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtVehicleType"
+                    android:textColor="@color/black"/>
 
                 <ImageView
                     android:id="@+id/imgModeType"
@@ -165,7 +170,8 @@
                     android:fontFamily="@font/poppinsregular"
                     android:text="Mon, Oct21, 5:02 PM"
                     app:layout_constraintBottom_toTopOf="@+id/view"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/black"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

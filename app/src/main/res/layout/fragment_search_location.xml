@@ -144,7 +144,6 @@
         android:layout_width="395dp"
         android:layout_height="705dp"
         android:layout_marginTop="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
@@ -159,7 +158,8 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
 
             <com.google.android.material.search.SearchBar
                 android:id="@+id/search_bar"
@@ -172,9 +172,10 @@
         <com.google.android.material.search.SearchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:backgroundTint="@color/white"
             android:hint="Location"
-            app:layout_anchor="@id/search_bar">
+            app:backgroundTint="@color/white"
+            app:layout_anchor="@id/search_bar"
+            android:layout_margin="16dp">
 
             <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
 

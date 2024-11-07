@@ -198,10 +198,10 @@ class HomeFragment : Fragment() {
             transaction.commit()
         }
 
-        val btnAddStop = view.findViewById<TextView>(R.id.btnAddStop)
-        btnAddStop.setOnClickListener {
-            Toast.makeText(activity, "Add Stop", Toast.LENGTH_SHORT).show()
-        }
+//        val btnAddStop = view.findViewById<TextView>(R.id.btnAddStop)
+//        btnAddStop.setOnClickListener {
+//            Toast.makeText(activity, "Add Stop", Toast.LENGTH_SHORT).show()
+//        }
 
         return view
     }

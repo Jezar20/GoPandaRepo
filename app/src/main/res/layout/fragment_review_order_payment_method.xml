@@ -27,7 +27,8 @@
             android:layout_marginStart="20dp"
             android:fontFamily="@font/poppinsbold"
             android:text="Payment method"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
 
 
         <com.google.android.material.card.MaterialCardView
