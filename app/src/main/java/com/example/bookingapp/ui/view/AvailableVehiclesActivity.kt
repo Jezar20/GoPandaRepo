@@ -1,8 +1,9 @@
-package com.example.bookingapp
+package com.example.bookingapp.ui.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
+import com.example.bookingapp.R
 
 class AvailableVehiclesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

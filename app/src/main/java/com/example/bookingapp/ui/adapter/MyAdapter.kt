@@ -1,4 +1,4 @@
-package com.example.bookingapp
+package com.example.bookingapp.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bookingapp.R
+import com.example.bookingapp.model.Service
 import com.google.android.material.card.MaterialCardView
 
 class MyAdapter(private val serviceList: List<Service>, private val fragmentManager: FragmentManager) :

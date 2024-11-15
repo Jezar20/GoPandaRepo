@@ -1,4 +1,4 @@
-package com.example.bookingapp
+package com.example.bookingapp.ui.view
 
 import android.animation.ValueAnimator
 import android.content.Intent
@@ -10,38 +10,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bookingapp.ui.adapter.MyAdapter
+import com.example.bookingapp.R
+import com.example.bookingapp.model.Service
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -87,7 +68,9 @@ class HomeFragment : Fragment() {
             card.strokeWidth = if (card.isChecked) 4 else 0 // adjust stroke width as needed
 
             // Update checkmark color only if you have a custom drawable
-            card.setCheckedIconTint(ContextCompat.getColorStateList(requireContext(), R.color.yellow))
+            card.setCheckedIconTint(ContextCompat.getColorStateList(requireContext(),
+                R.color.yellow
+            ))
 
             if (!card.isChecked) {
                 (recyclerView.adapter as MyAdapter).uncheckAllInnerCards()
@@ -265,23 +248,4 @@ class HomeFragment : Fragment() {
 //        return view
 //    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

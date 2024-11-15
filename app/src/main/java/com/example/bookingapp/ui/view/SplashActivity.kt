@@ -1,9 +1,11 @@
-package com.example.bookingapp
+package com.example.bookingapp.ui.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bookingapp.ui.MainActivity
+import com.example.bookingapp.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
