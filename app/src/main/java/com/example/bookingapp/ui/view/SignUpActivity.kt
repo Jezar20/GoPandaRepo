@@ -2,33 +2,56 @@ package com.example.bookingapp.ui.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageView
-import com.example.bookingapp.R
+import androidx.lifecycle.Observer
+import com.example.bookingapp.databinding.ActivitySignupBinding
+import com.example.bookingapp.viewmodel.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpActivity : AppCompatActivity() {
+    private lateinit var binding:ActivitySignupBinding
+    private val userViewModel: UserViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_signup)
+        binding = ActivitySignupBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val txtDescription4SignUp: TextView = findViewById(R.id.txtDescription4SignUp)
-        txtDescription4SignUp.setOnClickListener {
+        binding.btnSignUp.setOnClickListener{
+            val phoneNumber = binding.txtfieldInputNumberSignUp.text.toString()
+            val age = binding.txtfieldInputAgeSignUp.text.toString()
+            val googleAuthToken = "Google Auth Token"
+            userViewModel.signup(phoneNumber,age,googleAuthToken)
+        }
+
+        userViewModel.user.observe(this, Observer { user ->
+            if (user != null) {
+                if (binding.txtfieldInputNumberSignUp.text.toString() != user.phoneNumber && user.age!! >= 18) {
+                    Toast.makeText(this, "SignUp Success", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish() // Call finish() to ensure the SignUpActivity is closed
+                } else if (binding.txtfieldInputNumberSignUp.text.toString() == user.phoneNumber) {
+                    Toast.makeText(this, "Phone Number already exists", Toast.LENGTH_SHORT).show()
+                } else if (user.age!! < 18) {
+                    Toast.makeText(this, "You must be 18+ to register", Toast.LENGTH_SHORT).show()
+                }
+                userViewModel.resetState() // Reset state after processing
+            } else {
+                Toast.makeText(this, "SignUp Failed", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
+        binding.txtDescription4SignUp.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
-        val btnSignUp: Button = findViewById(R.id.btnSignUp)
-        btnSignUp.setOnClickListener(){
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-
-        val btnBackSignUp: AppCompatImageView = findViewById(R.id.btnBack)
-        btnBackSignUp.setOnClickListener(){
+        binding.btnBack.setOnClickListener(){
             finish()
         }
     }

@@ -97,11 +97,12 @@
                         android:background="@color/light_gray" />
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtFieldPhoneNumber"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="Enter Phone Number"
-                        android:inputType="phone"
+                        android:inputType="number"
                         android:maxLength="11" />
                 </LinearLayout>
             </com.google.android.material.textfield.TextInputLayout>

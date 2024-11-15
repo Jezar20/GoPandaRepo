@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,15 +20,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bookingapp.ui.adapter.MyAdapter
 import com.example.bookingapp.R
 import com.example.bookingapp.model.Service
+import com.example.bookingapp.viewmodel.UserViewModel
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
+    private val viewModel by viewModels<UserViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
@@ -41,6 +48,15 @@ class HomeFragment : Fragment() {
         val scrollView = view.findViewById<ScrollView>(R.id.scrollView)
         val staticBottomSheet = view.findViewById<View>(R.id.staticBottomSheet)
 
+//        viewModel.fetchUsers()
+//        viewModel.userPhoneNumber.observe(viewLifecycleOwner){
+//            it.forEach { user ->
+//                Log.i("TAG", "${user}")
+//            }
+//        }
+        viewModel.user.observe(viewLifecycleOwner){
+
+        }
         // Dummy data for RecyclerView
         val serviceList = listOf(
             Service("Buy for me (Up to ₱2,000)", "₱50.00"),

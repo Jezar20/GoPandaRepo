@@ -14,18 +14,20 @@
         android:src="@drawable/padalogo" />
 
     <TextView
+        android:id="@+id/txtGuestOrUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppinsbold"
-        android:text="BubuPanda"
+        android:text="Guest"
         android:textColor="@color/white" />
 
     <TextView
+        android:id="@+id/txtUserPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/poppinsregular"
-        android:text="BubuPanda@gmail.com"
+        android:text="+63 09171234566"
         android:textColor="@color/white"
         android:textSize="14sp" />
 

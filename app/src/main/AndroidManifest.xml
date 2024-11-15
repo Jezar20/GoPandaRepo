@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
+        android:name=".di.BookingApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,28 +18,24 @@
         android:theme="@style/Base.Theme.BookingApp"
         tools:targetApi="31">
         <activity
-            android:name=".AvailableVehiclesActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".SignUpActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".SplashActivity"
-            android:exported="true">
-        </activity>
-        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity android:name=".ui.view.AvailableVehiclesActivity"></activity>
+        <activity android:name=".ui.view.HomeFragment"></activity>
+        <activity android:name=".ui.view.SignUpActivity"></activity>
+        <activity android:name=".ui.view.LoginActivity"></activity>
+        <activity
+            android:name=".ui.SideBarActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".ui.view.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

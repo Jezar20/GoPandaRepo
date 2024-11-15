@@ -63,7 +63,6 @@
                 android:textColor="@color/black"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtfieldInputNumberSignUp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,6 +97,7 @@
                         android:background="@color/light_gray" />
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtfieldInputNumberSignUp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -108,7 +108,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtfieldInputAgeSignUp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,6 +126,7 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtfieldInputAgeSignUp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

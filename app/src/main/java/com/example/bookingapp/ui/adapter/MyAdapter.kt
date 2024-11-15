@@ -1,4 +1,4 @@
-package com.example.bookingapp.adapter
+package com.example.bookingapp.ui.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
